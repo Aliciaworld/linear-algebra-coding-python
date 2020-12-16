@@ -1,0 +1,44 @@
+from math import sqrt
+class Vector(object):
+	def __init__(self, coordinates):
+		try:
+			if not coordinates:
+				raise ValueError
+			self.coordinates = tuple(coordinates)
+			self.dimension = len(coordinates)
+		
+		except ValueError:
+			raise ValueError('The coordinates must be nonempty')
+			
+		except TypeError:
+			raise TypeError('The coordinates must be an iterable')
+		
+	def magnitude(self):
+		coordinates_squared=[x**2 for X in self.coordinates]
+		return sqrt(sum(coordinates_squared))
+	
+	def normalized(self):
+		try:
+			magnitude=self.magnitude()
+			return self.times_scalar(1./magnitude)
+		
+		except ZeroDivisionError:
+			raise Exception('Cannot normalize the zero vector')
+	
+	def pluse(self,v):
+		new_coordinates=[x+y for x, y in zip(self.coordinates, v.coordinates)]
+		return Vector(new_coordinates)
+	
+	def __str__(self):
+		return 'Vector:{}'.format(self.coordinates)
+	
+	def __eq__(self, v):
+		return self.coordinates == v.coordinates
+
+v = Vector([-0.126, 5.634, -6.283])
+print v.magnitude()
+
+v = Vector([1.998, 2.123, -2.231])
+print v.normalized()
+		
+	
