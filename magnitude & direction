@@ -14,7 +14,7 @@ class Vector(object):
 			raise TypeError('The coordinates must be an iterable')
 		
 	def magnitude(self):
-		coordinates_squared=[x**2 for X in self.coordinates]
+		coordinates_squared=[X**2 for X in self.coordinates]
 		return sqrt(sum(coordinates_squared))
 	
 	def normalized(self):
@@ -25,7 +25,7 @@ class Vector(object):
 		except ZeroDivisionError:
 			raise Exception('Cannot normalize the zero vector')
 	
-	def pluse(self,v):
+	def plus(self,v):
 		new_coordinates=[x+y for x, y in zip(self.coordinates, v.coordinates)]
 		return Vector(new_coordinates)
 	
