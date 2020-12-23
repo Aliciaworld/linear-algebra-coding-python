@@ -145,6 +145,7 @@ print (v.times_scalar(c))
 Vector: (11, 16)
 Vector: (5, 2)
 Vector: (12, 13.5)
+
 ...
 
 	
